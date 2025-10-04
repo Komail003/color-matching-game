@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Color Mix Game</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="wrap">
+      <header>
+        <h1>🎨 Color Mix — Match the Target</h1>
+        <div class="controls">
+          <button id="newBtn">New Target</button>
+          <button id="submitBtn" class="primary">Check Match</button>
+          <button id="nextBtn">Next Round</button>
+        </div>
+      </header>
+
+      <div class="board">
+        <div class="panel">
+          <div class="label">Target Color</div>
+          <div id="targetSwatch" class="swatch" title="Target color"></div>
+          <div
+            style="
+              display: flex;
+              justify-content: space-between;
+              margin-top: 10px;
+              align-items: center;
+            "
+          >
+            <div class="stats">
+              <div class="stat">Round: <span id="round">1</span></div>
+              <div class="stat">
+                Difficulty:
+                <select id="difficulty">
+                  <option value="1">Easy</option>
+                  <option value="2" selected>Medium</option>
+                  <option value="3">Hard</option>
+                </select>
+              </div>
+            </div>
+            <div>
+              <button id="hintBtn">Hint</button>
+            </div>
+          </div>
+          <div style="margin-top: 8px; color: var(--muted); font-size: 13px">
+            Try to match the target by adjusting RGB sliders. Closer = higher
+            score.
+          </div>
+        </div>
+
+        <div class="panel">
+          <div class="label">Your Mix</div>
+          <div id="mixSwatch" class="swatch"></div>
+
+          <div class="sliders" style="margin-top: 12px">
+            <div class="slider">
+              <div style="width: 48px; font-size: 13px; color: var(--muted)">
+                R
+              </div>
+              <input
+                id="rRange"
+                type="range"
+                min="0"
+                max="255"
+                value="128"
+              /><input id="rNum" type="number" min="0" max="255" value="128" />
+            </div>
+            <div class="slider">
+              <div style="width: 48px; font-size: 13px; color: var(--muted)">
+                G
+              </div>
+              <input
+                id="gRange"
+                type="range"
+                min="0"
+                max="255"
+                value="128"
+              /><input id="gNum" type="number" min="0" max="255" value="128" />
+            </div>
+            <div class="slider">
+              <div style="width: 48px; font-size: 13px; color: var(--muted)">
+                B
+              </div>
+              <input
+                id="bRange"
+                type="range"
+                min="0"
+                max="255"
+                value="128"
+              /><input id="bNum" type="number" min="0" max="255" value="128" />
+            </div>
+          </div>
+
+          <div
+            style="
+              display: flex;
+              gap: 8px;
+              margin-top: 12px;
+              align-items: center;
+            "
+          >
+            <div class="stat">Score: <strong id="score">—</strong></div>
+            <div class="stat">Distance: <strong id="distance">—</strong></div>
+            <div class="stat">Best: <strong id="best">—</strong></div>
+          </div>
+        </div>
+      </div>
+
+      <footer>
+        Tip: Use the <em>Hint</em> button to reveal one RGB channel of the
+        target. On <strong>Hard</strong> difficulty hints cost points.
+      </footer>
+    </div>
+
+    <script src="logic.js"></script>
+  </body>
+</html>
